@@ -35,7 +35,8 @@ Userss.PostUser= async (req,res)=>{
 
 //PutUser
 Userss.PutUser= async (req,res)=>{
-    const {email,password,name,lastname,provincia,sector,calle,tel,_id}=req.body;
+    const _id = req.params.id;
+    const {email,password,name,lastname,provincia,sector,calle,tel}=req.body;
     const OK = await User.findOneAndUpdate(_id,{email,password,name,lastname,provincia,sector,calle,tel});
     await OK.save();
     res.send('ok');
